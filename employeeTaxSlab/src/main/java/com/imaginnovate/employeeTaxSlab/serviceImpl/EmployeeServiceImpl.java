@@ -113,7 +113,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		double cess = 0.0;
 
 		if (income > 2500000) {
-			cess = income*0.02;
+			cess = (income-2500000)*0.02;
 		}
 		return cess;
 	}
