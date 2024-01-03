@@ -1,5 +1,7 @@
 package com.imaginnovate.employeeTaxSlab.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.imaginnovate.employeeTaxSlab.dto.EmployeeDTO;
+import com.imaginnovate.employeeTaxSlab.dto.EmployeeTaxDetailsDTO;
 import com.imaginnovate.employeeTaxSlab.service.EmployeeService;
 
 @RestController
@@ -21,7 +24,7 @@ public class EmployeeTaxSlabController {
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/addEmployee")
 	public ResponseEntity<String> saveEmployeeDetails(@Valid @RequestBody EmployeeDTO emp) {
-		if(validateEmployeeDetails(emp)) {
+		if(empService.validateEmployeeDetails(emp)) {
 			String employeeId = empService.saveEmployeeDetails(emp);
 			return ResponseEntity.ok("Employee Created with ID :"+employeeId);
 		}
@@ -29,30 +32,12 @@ public class EmployeeTaxSlabController {
 			return ResponseEntity.ok("invalid employee details");
 		}
 	}
-
-	private boolean validateEmployeeDetails(EmployeeDTO emp) {
-		if(emp.getEmpId()==null && emp.getEmpId().isEmpty()) {
-			return false;
-		}
-		if(emp.getFirstName()==null && emp.getFirstName().isEmpty()) {
-			return false;
-		}
-		if(emp.getLastName()==null && emp.getLastName().isEmpty()) {
-			return false;
-		}
-		if(emp.getEmail()==null && emp.getEmail().isEmpty()) {
-			return false;
-		}
-		if(emp.getPhoneNumber()==null && emp.getPhoneNumber().size()<0) {
-			return false;
-		}
-		if(emp.getDOJ()==null) {
-			return false;
-		}
-		else {
-			return false;
-		}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/getEmployeeTaxDetails")
+	public ResponseEntity<List<EmployeeTaxDetailsDTO>> getEmployeeTaxDetails() {
+		return null;
 	}
+	
 
 }
 	
