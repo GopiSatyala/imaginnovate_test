@@ -35,7 +35,7 @@ public class EmployeeTaxSlabController {
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/getEmployeeTaxDetails")
 	public ResponseEntity<List<EmployeeTaxDetailsDTO>> getEmployeeTaxDetails() {
-		return null;
+		return ResponseEntity.ok(empService.getEmployeeTaxDetails());
 	}
 	
 
