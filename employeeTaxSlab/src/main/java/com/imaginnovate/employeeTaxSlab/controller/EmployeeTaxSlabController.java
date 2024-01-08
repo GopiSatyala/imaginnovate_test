@@ -24,13 +24,8 @@ public class EmployeeTaxSlabController {
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/addEmployee")
 	public ResponseEntity<String> saveEmployeeDetails(@Valid @RequestBody EmployeeDTO emp) {
-		if(empService.validateEmployeeDetails(emp)) {
 			String employeeId = empService.saveEmployeeDetails(emp);
 			return ResponseEntity.ok("Employee Created with ID :"+employeeId);
-		}
-		else {
-			return ResponseEntity.ok("invalid employee details");
-		}
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/getEmployeeTaxDetails")

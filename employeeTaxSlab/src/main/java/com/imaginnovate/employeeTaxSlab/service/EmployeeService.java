@@ -7,7 +7,6 @@ import com.imaginnovate.employeeTaxSlab.dto.EmployeeTaxDetailsDTO;
 
 public interface EmployeeService {
 	
-	public boolean validateEmployeeDetails(EmployeeDTO emp);
 	public String saveEmployeeDetails(EmployeeDTO empDTO);
 	public List<EmployeeTaxDetailsDTO> getEmployeeTaxDetails();
 
